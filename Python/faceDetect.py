@@ -7,7 +7,7 @@ import os
 
 def face_detect(in_file):
 	img = cv2.imread(in_file)
-    filename, file_extension = os.path.splitext(in_file)
+        filename, file_extension = os.path.splitext(in_file)
 	out_file = "{0}.detected.{1}".format(filename, file_extension)
 	gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
