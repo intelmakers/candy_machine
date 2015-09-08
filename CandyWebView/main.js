@@ -27,27 +27,59 @@ console.log('MRAA Version: ' + mraa.getVersion()); //write the mraa version to t
 
 // Start by loading in some data
 var fs = require('fs');
+imageDir = __dir;
 
 var CandyWebPage = fs.readFileSync('/node_app_slot/candyWebPage.html');
 
 // Insert the ip address in the code in the page
 
 CandyWebPage = String(CandyWebPage).replace(/<<ipAddress>>/, ipAddress);
-CandyWebPage = String(CandyWebPage).replace(/<<PicPath>>/, __dirname);
-
 
 var http = require('http');
 http.createServer(function (req, res) {
+    pic = req.image;
     var value;
     // This is a very quick and dirty way of detecting a request for the page
     // versus a request for light values
-    if (req.url.indexOf('candyWebPage') != -1) {
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end(CandyWebPage);
+	if (typeof pic === 'undefined') {
+		if (req.url.indexOf('candyWebPage') != -1) {
+			res.writeHead(200, {'Content-Type': 'text/html'});
+			res.end(CandyWebPage);
+		}
+		else {
+			value = 1;
+			res.writeHead(200, {'Content-Type': 'text/json'});
+			res.end(JSON.stringify({rawValue:value}));
+		}
+	}
+	else {
+        //read the image using fs and send the image content back in the response
+        fs.readFile(imageDir + pic, function (err, content) {
+            if (err) {
+                res.writeHead(400, {'Content-type':'text/html'})
+                console.log(err);
+                res.end("No such image");    
+            } else {
+                //specify the content type in the response will be an image
+                res.writeHead(200,{'Content-type':'image/png'});
+                res.end(content);
+            }
+        });
     }
-    else {
-        value = 1;
-        res.writeHead(200, {'Content-Type': 'text/json'});
-        res.end(JSON.stringify({rawValue:value}));
-    }
+	
 }).listen(1337, ipAddress);
+
+
+//get the list of jpg files in the image dir
+function getImages(imageDir, callback) {
+    var fileType = '.png',
+        files = [], i;
+    fs.readdir(imageDir, function (err, list) {
+        for(i=0; i<list.length; i++) {
+            if(path.extname(list[i]) === fileType) {
+                files.push(list[i]); //store the file name into the array files
+            }
+        }
+        callback(err, files);
+    });
+}
