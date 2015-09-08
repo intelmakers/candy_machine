@@ -18,7 +18,7 @@ def get_image():
  retval, im = camera.read()
  return im
  
- def read_image(file):
+def read_image(file):
 	# Ramp the camera - these frames will be discarded and are only used to allow v4l2
 	# to adjust light levels, if necessary
 	for i in xrange(ramp_frames):

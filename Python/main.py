@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
-import cameraRead as cr
+import cameraRead
 
-file = 'D:/DLD/image.png'
-cr.read_image(file)
+file = 'image.png'
+cameraRead.read_image(file)
 
 
