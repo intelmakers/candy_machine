@@ -14,6 +14,8 @@ def interact():
        print to_say
        cm = 'espeak "'+to_say+'"'
        os.system(cm)
+       words = listen.doListen()
+       print "got words {0}".format(words)
 
 def main():
 	while (1 > 0):
@@ -22,12 +24,8 @@ def main():
 
 		if (detected != None):
 			interact()
-			time.sleep(30)
+                 	time.sleep(3)
 			
-
-except KeyboardInterrupt:
-    print "Keyboard interrupt received. Cleaning up..."
-
 if __name__ == "__main__":
     try:
         main()

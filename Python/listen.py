@@ -21,11 +21,11 @@ CHUNK = 1024
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 16000
-RECORD_SECONDS = 2
+RECORD_SECONDS = 3 
 PATH = 'output'
 
-//   if "ALL" in words:
-//        print "ALL"
+#   if "ALL" in words:
+#        print "ALL"
 
 if not os.path.exists(PATH):
     os.makedirs(PATH)
