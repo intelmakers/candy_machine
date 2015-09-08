@@ -4,6 +4,7 @@
  </title>
 </head>
 <body>
+ <img id="picture" width="220" height="277" src="pic.png" alt="Pic">
  <canvas id="CandyCanvas" width="320" height="100" style="border:1px solid #000000;">
  </canvas>
  <script>
@@ -11,19 +12,25 @@
   var canvas = document.getElementById('CandyCanvas');
   var context = canvas.getContext("2d");
 
-  context.font = '10px courier';
-  context.fillRect(indent, 52, 300, 2);
-  context.font = '20px courier';
-  context.fillText('Lux', indent + 120, 80);
+
+
+ var img = document.getElementById("picture");
+ context.drawImage(img, 100, 100);
+ // context.font = '10px courier';
+ // context.fillRect(indent, 52, 300, 2);
+ // context.font = '20px courier';
+ // context.fillText('Lux', indent + 120, 80);
   window.setInterval(UpdatePic, 1000);
   function UpdatePic() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
       if (request.readyState == 4 && request.status == 200) {
-          context.font = '13px courier';
-          context.fillRect(20, 80, 299, 19);
-          context.fillStyle = '#000000';    // black 
-          context.fillText('Lux:' + 30 + ' value:' + 30, 20, 99);
+ //         context.font = '13px courier';
+ //         context.fillRect(20, 80, 299, 19);
+ //         context.fillStyle = '#000000';    // black 
+ //         context.fillText('Lux:' + 30 + ' value:' + 30, 20, 99);
+            img = document.getElementById("picture");
+            context.drawImage(img, 200, 200);
       }
     };
    request.open('GET', 'http://<<ipAddress>>:1337/data', true);
