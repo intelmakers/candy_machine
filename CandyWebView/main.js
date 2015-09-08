@@ -34,42 +34,6 @@ var CandyWebPage = fs.readFileSync('/node_app_slot/candyWebPage.html');
 
 CandyWebPage = String(CandyWebPage).replace(/<<ipAddress>>/, ipAddress);
 
-//var analogPin0 = new mraa.Aio(0);
-
-/**
- * Given a value, convert it to Lux
- *
- * This uses the table given in the documentation for the 
- * Grove Starter Kit Plus. We have not sought to verify these
- * values with our device. That would be worth doing if you
- * intend to rely on these values. In that case, it could also
- * be worthwhile to improve the interpolation formula
- * @param {Number} - the raw reading from the device
- */
-function getLux(analogValue) {
-  // Values taken from Grove Starter Kit for Arduino table
-  var lux;
-  var calib = [{reading:0, lux:0},
-               {reading:100, lux:0.2},  // guess - not from published table
-               {reading:200, lux:1},
-               {reading:300, lux:3},
-               {reading:400, lux:6},
-               {reading:500, lux:10},
-               {reading:600, lux:15},
-               {reading:700, lux:35},
-               {reading:800, lux:80},
-               {reading:900, lux:100}];
-  var i = 0;
-  while (i < calib.length && calib[i].reading < analogValue) {
-    i ++;
-  }
-  if (i > 0) {
-    i = i - 1;
-  }
-  // simple linear interpolation 
-  lux =  (calib[i].lux *(calib[i + 1].reading - analogValue) + calib[i + 1].lux * (analogValue - calib[i].reading))/(calib[i + 1].reading - calib[i].reading);
-  return lux;
-}
 
 var http = require('http');
 http.createServer(function (req, res) {
