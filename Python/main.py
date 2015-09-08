@@ -13,7 +13,7 @@ file = '/usr/lib/edison_config_tools/public/image.png'
 iotivity_dir = '/home/root/events'
 iotivity_file = "{0}/candy_PUT.txt".format(iotivity_dir)
 my_dir = os.path.dirname(__file__)
-candy_audio_file = "{0}/audio/IWantCandylyricsbyAaronCarter.mp3".format(my_dir)
+candy_audio_file = "{0}/audio/IWantCandylyricsbyAaronCarter.wav".format(my_dir)
 
 def interact():
         to_say = "Nice to meet you. Would you like a candy"
