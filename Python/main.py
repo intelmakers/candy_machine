@@ -17,15 +17,15 @@ def interact():
         os.system(cm)
         said = listen.doListen()
         print "got words {0}".format(said)
-	    words = said.split()
-	    if "YES" in words:
-		   to_say = "Do not forget to brush your teeth!!!"
-	       cm = 'espeak "'+to_say+'"'
-           os.system(cm)
-		   moveServo.give_candy()
-	    else
-	        to_say = "Good, I can eat it all myself."
-			cm = 'espeak "'+to_say+'"'
+	words = said.split()
+	if "YES" in words:
+	    to_say = "Do not forget to brush your teeth!!!"
+	    cm = 'espeak "'+to_say+'"'
+            os.system(cm)
+	    moveServo.give_candy()
+	else:
+	    to_say = "Good, I can eat it all myself."
+            cm = 'espeak "'+to_say+'"'
             os.system(cm)
 
 def main():
@@ -35,13 +35,13 @@ def main():
 
 		if (detected != None):
 			interact()
-            time.sleep(3)
+                        time.sleep(3)
 			
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
         print "Keyboard interrupt received. Cleaning up..."
-		cameraRead.close_camera()
-		moveServo.del_servo()
+        cameraRead.close_camera()
+	moveServo.del_servo()
 		

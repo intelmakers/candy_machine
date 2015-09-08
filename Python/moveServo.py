@@ -29,18 +29,21 @@ gServo = servo.ES08A(5)
 
 def move_servo(angle1, angle2, time_interval):
     step_angle = (angle2-angle1)/num_steps
-	sleep_time = time_interval/num_steps
-	
-    for angle range(angle1, angle2, step_angle):
+    sleep_time = time_interval/num_steps
+
+    angle = angle1	
+    for i in range(1, num_steps):
         gServo.setAngle(angle)
-    
-	gServo.setAngle(angle2)
-	print "Set angle to {0}".format(angle2)
+        time.sleep(sleep_time)
+        angle += step_angle
+
+    gServo.setAngle(angle2)
+    print "Set angle to {0}".format(angle2)
 	
 def give_candy():
     move_servo(0, 90, 1)
-	time.sleep(1)
-	move_servo(90, 0, 1)
+    time.sleep(1)
+    move_servo(90, 0, 1)
 
 def del_servo():
 # Delete the servo object
