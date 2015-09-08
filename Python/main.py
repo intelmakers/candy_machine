@@ -1,9 +1,11 @@
 #!/usr/bin/python
 
-import cameraRead
-import faceDetect
 import os
 import time
+import cameraRead
+import faceDetect
+import listen
+
 
 file = '/usr/lib/edison_config_tools/public/image.png'
 
@@ -13,16 +15,21 @@ def interact():
        cm = 'espeak "'+to_say+'"'
        os.system(cm)
 
-while (1 > 0):
-	cameraRead.read_image(file)
-	detected = faceDetect.face_detect(file)
+def main():
+	while (1 > 0):
+		cameraRead.read_image(file)
+		detected = faceDetect.face_detect(file)
 
-	if (detected != None):
-		interact()
-		time.sleep(30)
-		
-	
+		if (detected != None):
+			interact()
+			time.sleep(30)
+			
 
+except KeyboardInterrupt:
+    print "Keyboard interrupt received. Cleaning up..."
 
-
-
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print "Keyboard interrupt received. Cleaning up..."

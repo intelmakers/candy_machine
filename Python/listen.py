@@ -11,10 +11,12 @@ import wave
 import pocketsphinx as ps
 import sphinxbase
 
+my_dir = os.path.dirname(__file__)
+dict_name = 8670
 
 # Parameters for pocketsphinx
-LMD   = "/home/root/led-speech-edison/lm/8484.lm"
-DICTD = "/home/root/led-speech-edison/lm/8484.dic"
+LMD   = "{0}/dict/{1}.lm".format(my_dir, dict_name)
+DICTD = "{0}/dict/{1}.dic".format(my_dir, dict_name)
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
@@ -22,20 +24,14 @@ RATE = 16000
 RECORD_SECONDS = 2
 PATH = 'output'
 
-LED_ON = 1
-LED_OFF = 0
-def triggerLeds(words):
+//   if "ALL" in words:
+//        print "ALL"
 
-    if "RED" in words:
-        print "RED"
-    if "GREEN" in words:
-        print "GREEN"
-    if "WHITE" in words:
-        print "WHITE"
-    if "YELLOW" in words:
-        print "YELLOW"
-    if "ALL" in words:
-        print "ALL"
+if not os.path.exists(PATH):
+    os.makedirs(PATH)
+
+pya = pyaudio.PyAudio()
+speech_rec = ps.Decoder(lm=LMD, dict=DICTD)
 
 def decodeSpeech(speech_rec, wav_file):
 	wav_file = file(wav_file,'rb')
@@ -44,51 +40,39 @@ def decodeSpeech(speech_rec, wav_file):
 	result = speech_rec.get_hyp()
 	return result[0]
 
-def main():
-    if not os.path.exists(PATH):
-        os.makedirs(PATH)
+	
+def doListen():
+	# Record audio
+	stream = pya.open(format=FORMAT, channels=CHANNELS, rate=RATE, input=True, frames_per_buffer=CHUNK)
+	print("* recording")
+	frames = []
+	for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+		data = stream.read(CHUNK)
+		frames.append(data)
+	print("* done recording")
+	stream.stop_stream()
+	stream.close()
+	#pya.terminate()
 
-    p = pyaudio.PyAudio()
-    speech_rec = ps.Decoder(lm=LMD, dict=DICTD)
+	# Write .wav file
+	fn = "o.wav"
+	wf = wave.open(os.path.join(PATH, fn), 'wb')
+	wf.setnchannels(CHANNELS)
+	wf.setsampwidth(pya.get_sample_size(FORMAT))
+	wf.setframerate(RATE)
+	wf.writeframes(b''.join(frames))
+	wf.close()
 
-    while True:
-        # Record audio
-    	stream = p.open(format=FORMAT, channels=CHANNELS, rate=RATE, input=True, frames_per_buffer=CHUNK)
-    	print("* recording")
-    	frames = []
-    	for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
-    		data = stream.read(CHUNK)
-    		frames.append(data)
-    	print("* done recording")
-    	stream.stop_stream()
-    	stream.close()
-    	#p.terminate()
+	# Decode speech
+	wav_file = os.path.join(PATH, fn)
+	recognised = decodeSpeech(speech_rec, wav_file)
+	rec_words = recognised.split()
 
-        # Write .wav file
-        fn = "o.wav"
-    	wf = wave.open(os.path.join(PATH, fn), 'wb')
-    	wf.setnchannels(CHANNELS)
-    	wf.setsampwidth(p.get_sample_size(FORMAT))
-    	wf.setframerate(RATE)
-    	wf.writeframes(b''.join(frames))
-    	wf.close()
+	print "Recognized: {0}".format(recognised)
 
-        # Decode speech
-    	wav_file = os.path.join(PATH, fn)
-    	recognised = decodeSpeech(speech_rec, wav_file)
-    	rec_words = recognised.split()
+	# Playback recognized word(s)
+	cm = 'espeak "'+recognised+'"'
+	os.system(cm)
+	return recognised
 
-        # Trigger LEDs
-        print "Trigger"
-        triggerLeds(rec_words)
 
-        # Playback recognized word(s)
-    	cm = 'espeak "'+recognised+'"'
-    	os.system(cm)
-
-if __name__ == "__main__":
-    try:
-        main()
-    except KeyboardInterrupt:
-        print "Keyboard interrupt received. Cleaning up..."
-        allLedsOff(leds)
