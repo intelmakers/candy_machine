@@ -1,0 +1,113 @@
+Language model created by QuickLM on Tue Sep  8 13:50:49 EDT 2015
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 22 sentences and 24 words
+
+\data\
+ngram 1=24
+ngram 2=44
+ngram 3=22
+
+\1-grams:
+-0.7782 </s> -0.3010
+-0.7782 <s> -0.2218
+-2.1206 BLACK -0.2218
+-2.1206 BLUE -0.2218
+-2.1206 EIGHT -0.2218
+-2.1206 FIVE -0.2218
+-2.1206 FOUR -0.2218
+-2.1206 GRAY -0.2218
+-2.1206 GREEN -0.2218
+-2.1206 INTEL -0.2218
+-2.1206 NINE -0.2218
+-2.1206 NO -0.2218
+-2.1206 ONE -0.2218
+-2.1206 PLEASE -0.2218
+-2.1206 RED -0.2218
+-2.1206 SEVEN -0.2218
+-2.1206 SIX -0.2218
+-2.1206 TASTY -0.2218
+-2.1206 TEN -0.2218
+-2.1206 THREE -0.2218
+-2.1206 TWO -0.2218
+-2.1206 WHITE -0.2218
+-2.1206 YELLOW -0.2218
+-2.1206 YES -0.2218
+
+\2-grams:
+-1.6435 <s> BLACK 0.0000
+-1.6435 <s> BLUE 0.0000
+-1.6435 <s> EIGHT 0.0000
+-1.6435 <s> FIVE 0.0000
+-1.6435 <s> FOUR 0.0000
+-1.6435 <s> GRAY 0.0000
+-1.6435 <s> GREEN 0.0000
+-1.6435 <s> INTEL 0.0000
+-1.6435 <s> NINE 0.0000
+-1.6435 <s> NO 0.0000
+-1.6435 <s> ONE 0.0000
+-1.6435 <s> PLEASE 0.0000
+-1.6435 <s> RED 0.0000
+-1.6435 <s> SEVEN 0.0000
+-1.6435 <s> SIX 0.0000
+-1.6435 <s> TASTY 0.0000
+-1.6435 <s> TEN 0.0000
+-1.6435 <s> THREE 0.0000
+-1.6435 <s> TWO 0.0000
+-1.6435 <s> WHITE 0.0000
+-1.6435 <s> YELLOW 0.0000
+-1.6435 <s> YES 0.0000
+-0.3010 BLACK </s> -0.3010
+-0.3010 BLUE </s> -0.3010
+-0.3010 EIGHT </s> -0.3010
+-0.3010 FIVE </s> -0.3010
+-0.3010 FOUR </s> -0.3010
+-0.3010 GRAY </s> -0.3010
+-0.3010 GREEN </s> -0.3010
+-0.3010 INTEL </s> -0.3010
+-0.3010 NINE </s> -0.3010
+-0.3010 NO </s> -0.3010
+-0.3010 ONE </s> -0.3010
+-0.3010 PLEASE </s> -0.3010
+-0.3010 RED </s> -0.3010
+-0.3010 SEVEN </s> -0.3010
+-0.3010 SIX </s> -0.3010
+-0.3010 TASTY </s> -0.3010
+-0.3010 TEN </s> -0.3010
+-0.3010 THREE </s> -0.3010
+-0.3010 TWO </s> -0.3010
+-0.3010 WHITE </s> -0.3010
+-0.3010 YELLOW </s> -0.3010
+-0.3010 YES </s> -0.3010
+
+\3-grams:
+-0.3010 <s> BLACK </s>
+-0.3010 <s> BLUE </s>
+-0.3010 <s> EIGHT </s>
+-0.3010 <s> FIVE </s>
+-0.3010 <s> FOUR </s>
+-0.3010 <s> GRAY </s>
+-0.3010 <s> GREEN </s>
+-0.3010 <s> INTEL </s>
+-0.3010 <s> NINE </s>
+-0.3010 <s> NO </s>
+-0.3010 <s> ONE </s>
+-0.3010 <s> PLEASE </s>
+-0.3010 <s> RED </s>
+-0.3010 <s> SEVEN </s>
+-0.3010 <s> SIX </s>
+-0.3010 <s> TASTY </s>
+-0.3010 <s> TEN </s>
+-0.3010 <s> THREE </s>
+-0.3010 <s> TWO </s>
+-0.3010 <s> WHITE </s>
+-0.3010 <s> YELLOW </s>
+-0.3010 <s> YES </s>
+
+\end\
