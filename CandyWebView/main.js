@@ -42,11 +42,11 @@ http.createServer(function (req, res) {
     // versus a request for light values
     if (req.url.indexOf('candyWebPage') != -1) {
         res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end(candyWebPage);
+        res.end(CandyWebPage);
     }
     else {
         value = 1;
         res.writeHead(200, {'Content-Type': 'text/json'});
-        res.end(JSON.stringify({lightLevel:getLux(value), rawValue:value}));
+        res.end(JSON.stringify({rawValue:value}));
     }
 }).listen(1337, ipAddress);
