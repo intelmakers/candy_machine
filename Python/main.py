@@ -26,13 +26,13 @@ def interact():
 	if "YES" in words:
 	    to_say = "Do not forget to brush your teeth!!!"
 	    cm = 'espeak "'+to_say+'"'
-        os.system(cm)
+            os.system(cm)
 	    moveServo.give_candy()
 	else:
 	    to_say =  "I O Tivity Party"
-        cm = 'espeak "'+to_say+'"'
-        os.system(cm)
-        time.sleep(0.1)
+            cm = 'espeak "'+to_say+'"'
+            os.system(cm)
+            time.sleep(0.1)
 
 
 def iotivity():
@@ -49,13 +49,13 @@ def iotivity():
             
 def main():
 	while (1 > 0):
-        iotivity()
+                iotivity()
 		cameraRead.read_image(file)
 		detected = faceDetect.face_detect(file)
 
 		if (detected != None):
 			interact()
-            time.sleep(3)
+                        time.sleep(3)
 			
 if __name__ == "__main__":
     try:
@@ -63,5 +63,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print "Keyboard interrupt received. Cleaning up..."
         cameraRead.close_camera()
-	    moveServo.del_servo()
+	moveServo.del_servo()
 		
