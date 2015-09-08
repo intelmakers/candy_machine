@@ -20,7 +20,7 @@ Article: https://software.intel.com/en-us/xdk-sample-creating-a-web-server
 */
 
 // Set this to the ip address of your board (not 127.0.0.1)
-var ipAddress = '192.168.2.15'; 
+var ipAddress = '1.2.2.137'; 
 
 var mraa = require('mraa'); //require mraa
 console.log('MRAA Version: ' + mraa.getVersion()); //write the mraa version to the console
@@ -76,9 +76,9 @@ http.createServer(function (req, res) {
     var value;
     // This is a very quick and dirty way of detecting a request for the page
     // versus a request for light values
-    if (req.url.indexOf('lightsensor') != -1) {
+    if (req.url.indexOf('candyWebPage') != -1) {
         res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end(lightSensorPage);
+        res.end(candyWebPage);
     }
     else {
         value = 1;
