@@ -48,6 +48,7 @@ def iotivity():
         moveServo.give_candy()
             
 def main():
+        moveServo.init_candy()
 	while (1 > 0):
                 iotivity()
 		cameraRead.read_image(file)
@@ -63,5 +64,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print "Keyboard interrupt received. Cleaning up..."
         cameraRead.close_camera()
-	moveServo.del_servo()
+	moveServo.del_all_servos()
 		

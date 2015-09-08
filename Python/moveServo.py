@@ -25,26 +25,78 @@ import pyupm_servo as servo
 
 num_steps = 20
 
-gServo = servo.ES08A(5)
+candyPin = 5
+leftPin = 11
+rightPin = 10
+middlePin = 9
 
-def move_servo(angle1, angle2, time_interval):
+cServo = None
+left = None
+right = None
+middle = None
+
+def init_candy():
+    cServo = servo.ES08A(candyPin)
+
+def init_spider():
+    left = servo.ES08A(leftPin)
+    right = servo.ES08A(rightPin)
+    middle = servo.ES08A(middlePin)
+
+    left.setAngle(90)
+    right.setAngle(90)
+    middle.setAngle(90)
+
+
+def move_servo(aServo, angle1, angle2, time_interval):
     step_angle = (angle2-angle1)/num_steps
     sleep_time = time_interval/num_steps
 
     angle = angle1	
     for i in range(1, num_steps):
-        gServo.setAngle(angle)
+        aServo.setAngle(angle)
         time.sleep(sleep_time)
         angle += step_angle
 
-    gServo.setAngle(angle2)
+    aServo.setAngle(angle2)
     print "Set angle to {0}".format(angle2)
 	
-def give_candy():
-    move_servo(0, 90, 1)
-    time.sleep(1)
-    move_servo(90, 0, 1)
 
-def del_servo():
-# Delete the servo object
-    del gServo 
+def give_candy():
+    move_servo(cServo, 0, 90, 1)
+    time.sleep(1)
+    move_servo(cServo, 90, 0, 1)
+
+
+def step_left():
+    middle.setAngle(75);
+    for pos in range(140, 40; -4):
+        left.setAngle(pos);
+        right.setAngle(pos);
+        time.sleep(0.02);
+
+def step_right():
+    middle.setAngle(105);
+    for pos in range(40, 140; 4):
+        left.setAngle(pos);
+        right.setAngle(pos);
+        time.sleep(0.02);
+
+def go_steps(steps_to_go):
+    for i in range(1, steps_to_go):
+        step_right()
+        step_left()
+
+
+def del_servo(aServo):
+    # Delete the servo object
+    if aServo:      # del only if not None
+        del aServo 
+
+
+def del_all_servos():
+    del_servo(cServo)
+    del_servo(left)
+    del_servo(right)
+    del_servo(middle)
+
