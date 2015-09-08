@@ -33,6 +33,7 @@ var CandyWebPage = fs.readFileSync('/node_app_slot/candyWebPage.html');
 // Insert the ip address in the code in the page
 
 CandyWebPage = String(CandyWebPage).replace(/<<ipAddress>>/, ipAddress);
+CandyWebPage = String(CandyWebPage).replace(/<<PicPath>>/, __dirname);
 
 
 var http = require('http');
