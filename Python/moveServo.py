@@ -36,9 +36,13 @@ right = None
 middle = None
 
 def init_candy():
+    global cServo
     cServo = servo.ES08A(candyPin)
 
 def init_spider():
+    global left
+    global right
+    global middle
     left = servo.ES08A(leftPin)
     right = servo.ES08A(rightPin)
     middle = servo.ES08A(middlePin)
@@ -70,14 +74,14 @@ def give_candy():
 
 def step_left():
     middle.setAngle(75);
-    for pos in range(140, 40; -4):
+    for pos in range(140, 40, -4):
         left.setAngle(pos);
         right.setAngle(pos);
         time.sleep(0.02);
 
 def step_right():
     middle.setAngle(105);
-    for pos in range(40, 140; 4):
+    for pos in range(40, 140, 4):
         left.setAngle(pos);
         right.setAngle(pos);
         time.sleep(0.02);
