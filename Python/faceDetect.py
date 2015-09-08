@@ -20,7 +20,11 @@ def face_detect(in_file):
 		return None
 		
 	if num_of_faces > 1:
-		espeak.synth("Too many people. One at a time please")
+
+	    to_say = Too many people. One at a time please!"
+        cm = 'espeak "'+to_say+'"'
+        os.system(cm)
+		#espeak.synth("")
 		return None
 		
 	for (x,y,w,h) in faces:
