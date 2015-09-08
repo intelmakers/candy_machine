@@ -10,7 +10,7 @@ ramp_frames = 30
 # Now we can initialize the camera capture object with the cv2.VideoCapture class.
 # All it needs is the index to a camera port.
 camera = cv2.VideoCapture(camera_port)
-#	del(camera)
+
  
 # Captures a single image from the camera and returns it in PIL format
 def get_image():
@@ -34,3 +34,5 @@ def read_image(file):
 	# capture object until your script exits
 
 
+def close_camera():
+    del(camera)

@@ -23,24 +23,25 @@
 import time
 import pyupm_servo as servo 
 
-# Create the servo object using D5
+num_steps = 20
+
 gServo = servo.ES08A(5)
 
-for i in range(0,10): 
-    # Set the servo arm to 0 degrees
-    gServo.setAngle(0)
-    print 'Set angle to 0'
-    time.sleep(1)
+def move_servo(angle1, angle2, time_interval):
+    step_angle = (angle2-angle1)/num_steps
+	sleep_time = time_interval/num_steps
+	
+    for angle range(angle1, angle2, step_angle):
+        gServo.setAngle(angle)
+    
+	gServo.setAngle(angle2)
+	print "Set angle to {0}".format(angle2)
+	
+def give_candy():
+    move_servo(0, 90, 1)
+	time.sleep(1)
+	move_servo(90, 0, 1)
 
-    # Set the servo arm to 90 degrees
-    gServo.setAngle(90)
-    print 'Set angle to 90'
-    time.sleep(1)
-
-    # Set the servo arm to 180 degrees
-    gServo.setAngle(180)
-    print 'Set angle to 180'
-    time.sleep(1)
-
+def del_servo():
 # Delete the servo object
-del gServo 
+    del gServo 
