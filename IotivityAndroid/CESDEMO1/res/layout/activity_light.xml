@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+	<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical" >
+
+	        <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal" >
+		        <TextView
+		            android:id="@+id/textView_smartplug"
+		            android:layout_width="120dp"
+		            android:layout_height="wrap_content"
+		            android:text="Smart Plug : "
+		            android:textAppearance="?android:attr/textAppearanceMedium" 
+		            android:layout_gravity="center"/> 
+	                 
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:switchMinWidth="100dp"
+                        android:minHeight="100dp"
+                        android:id="@+id/tswitch_smartplug"
+                        android:minWidth="100dp"
+                        android:thumbTextPadding="50dp"
+                        android:textSize="60dp"
+                        android:thumb="@drawable/thumb"
+                        android:track="@drawable/track"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true" />
+		        
+		        
+	        </LinearLayout>
+	        <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
+	        <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal" >
+		        <TextView
+		            android:id="@+id/textView_dimmer"
+		            android:layout_width="120dp"
+		            android:layout_height="wrap_content"
+		            android:text="Dimmer : "
+		            android:textAppearance="?android:attr/textAppearanceMedium" 
+		            android:layout_gravity="center"/> 
+				<LinearLayout
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="vertical" >
+			        <LinearLayout
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal" >
+	     
+				        <Button
+				            android:id="@+id/btn_dimmer1On"
+				            android:layout_width="120dp"
+				            android:layout_height="wrap_content"
+				            android:layout_gravity="center"
+				            android:text="ON" />
+		
+				        <Button
+				            android:id="@+id/btn_dimmer1Off"
+				            android:layout_width="120dp"
+				            android:layout_height="wrap_content"
+				            android:layout_gravity="center"
+				            android:text="ON" />
+		
+			        </LinearLayout>
+			        <LinearLayout
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal"
+				         >
+					    <org.iotivity.cesdemo.numberpicker.NumberPicker
+					        android:id="@+id/np_dimmer1"
+					        android:layout_width="120dp"
+					        android:layout_height="wrap_content" />
+					    
+					    <org.iotivity.cesdemo.numberpicker.NumberPicker
+					        android:id="@+id/np_dimmer2"
+					        android:layout_width="120dp"
+					        android:layout_height="wrap_content" />
+					    
+				    </LinearLayout>
+			        <LinearLayout
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal" >
+	     
+				        <Button
+				            android:id="@+id/btn_dimmer2On"
+				            android:layout_width="120dp"
+				            android:layout_height="wrap_content"
+				            android:layout_gravity="center"
+				            android:text="OFF" />
+		
+				        <Button
+				            android:id="@+id/btn_dimmer2Off"
+				            android:layout_width="120dp"
+				            android:layout_height="wrap_content"
+				            android:layout_gravity="center"
+				            android:text="OFF" />
+		
+			        </LinearLayout>
+			    </LinearLayout>
+		    </LinearLayout>
+		    <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="80dp"
+	            android:layout_margin="2dp"
+	            android:orientation="horizontal" >
+
+		        <TextView
+		            android:id="@+id/edison_light_status"
+		            android:layout_width="120dp"
+		            android:layout_height="wrap_content"
+		            android:text="Edison Light : "
+		            android:textAppearance="?android:attr/textAppearanceMedium" 
+		            android:layout_gravity="center"/> 
+
+				<Switch
+				    android:id="@+id/tedison_switch"
+				    android:layout_width="wrap_content"
+				    android:layout_height="46dp"
+				    android:checked="true"
+				    android:minHeight="60dp"
+				    android:minWidth="60dp"
+				    android:switchMinWidth="60dp"
+				    android:textSize="60dp"
+				    android:thumb="@drawable/thumb"
+				    android:thumbTextPadding="50dp"
+				    android:track="@drawable/track" />
+
+		    </LinearLayout>
+		    <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="80dp"
+	            android:layout_margin="2dp"
+	            android:orientation="horizontal" >
+
+		        <TextView
+		            android:id="@+id/edison_lock_status"
+		            android:layout_width="120dp"
+		            android:layout_height="wrap_content"
+		            android:text="Edison Lock : "
+		            android:textAppearance="?android:attr/textAppearanceMedium" 
+		            android:layout_gravity="center"/> 
+
+				<Switch
+				    android:id="@+id/tedison_lock_switch"
+				    android:layout_width="wrap_content"
+				    android:layout_height="46dp"
+				    android:checked="true"
+				    android:minHeight="60dp"
+				    android:minWidth="60dp"
+				    android:switchMinWidth="60dp"
+				    android:textSize="60dp"
+				    android:thumb="@drawable/thumb"
+				    android:thumbTextPadding="50dp"
+				    android:track="@drawable/track" />
+
+		    </LinearLayout>
+	        <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
+			<LinearLayout
+			   android:layout_width="wrap_content"
+			   android:layout_height="wrap_content"
+			   android:orientation="horizontal" >
+			   <TextView
+			       android:id="@+id/textView_thermo"
+			       android:layout_width="120dp"
+			       android:layout_height="wrap_content"
+			       android:text="Thermostat : "
+			       android:textAppearance="?android:attr/textAppearanceMedium" 
+			       android:layout_gravity="center"/> 
+			       
+			   	   <LinearLayout
+				       android:layout_width="match_parent"
+				       android:layout_height="wrap_content"
+				       android:orientation="horizontal" >
+					   <org.iotivity.cesdemo.numberpicker.NumberPicker
+					       android:id="@+id/np_therm1"
+					       android:layout_width="80dp"
+					       android:layout_height="wrap_content"
+					       android:layout_gravity="center" />
+					   
+					   <org.iotivity.cesdemo.numberpicker.NumberPicker
+					       android:id="@+id/np_therm2"
+					       android:layout_width="80dp"
+					       android:layout_height="wrap_content" 
+					       android:layout_gravity="center"/>
+			       </LinearLayout>       
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+					   android:layout_gravity="center"
+                       android:orientation="vertical" >
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="TEMPERATURE"
+                           android:textSize="20dp"
+                           android:layout_gravity="center"
+                           android:id="@+id/textview_thermo_temp"/>
+                       <Button
+                           android:id="@+id/btn_set_therm"
+                           android:layout_width="80dp"
+                           android:layout_height="wrap_content"
+                           android:layout_gravity="center"
+                           android:text="SET"/>
+                   </LinearLayout>       
+			  </LinearLayout>
+	          <View
+                   android:layout_width="fill_parent"
+                   android:layout_height="1dp"
+                   android:background="@android:color/darker_gray"/>
+			  <LinearLayout
+				   android:layout_width="match_parent"
+				   android:layout_height="wrap_content"
+				   android:orientation="horizontal" >
+				   <TextView
+				       android:id="@+id/textView4"
+				       android:layout_width="120dp"
+				       android:layout_height="wrap_content"
+				       android:text="Notification : "
+				       android:textAppearance="?android:attr/textAppearanceMedium" 
+				       android:layout_gravity="center"/> 
+				   <Button
+				       android:id="@+id/btn_noti"
+				       android:layout_width="240dp"
+				       android:layout_height="wrap_content"
+				       android:layout_gravity="center"
+				       android:text="Send Noti. to Gear"/>    
+			   </LinearLayout>
+	           <View
+                       android:layout_width="fill_parent"
+                       android:layout_height="1dp"
+                       android:background="@android:color/darker_gray"/>
+			   <LinearLayout
+				   android:layout_width="match_parent"
+				   android:layout_height="wrap_content"
+				   android:orientation="horizontal" >
+				   <TextView
+				       android:id="@+id/textView5"
+				       android:layout_width="120dp"
+				       android:layout_height="wrap_content"
+				       android:text="Hue Control : "
+				       android:textAppearance="?android:attr/textAppearanceMedium" 
+				       android:layout_gravity="center"/> 
+				   <ToggleButton
+			            android:id="@+id/tbtn_hue_power"
+			            android:layout_width="120dp"
+			            android:layout_height="wrap_content"
+			            android:layout_gravity="center"
+			            android:onClick="onToggleClicked"
+			            android:textOff="OFF"
+			            android:textOn="ON" />   
+		           <org.iotivity.cesdemo.numberpicker.NumberPicker
+				        android:id="@+id/np_hue_color"
+				        android:layout_width="120dp"
+				        android:layout_height="wrap_content" 
+				        android:layout_gravity="center"/>
+			   </LinearLayout>
+               <View
+                   android:layout_width="fill_parent"
+                   android:layout_height="1dp"
+                   android:background="@android:color/darker_gray"/>
+			   <LinearLayout
+				   android:layout_width="match_parent"
+				   android:layout_height="wrap_content"
+				   android:orientation="horizontal" >
+				   <TextView
+				       android:id="@+id/textView6"
+				       android:layout_width="120dp"
+				       android:layout_height="wrap_content"
+				       android:text="Group Ctrl : "
+				       android:textAppearance="?android:attr/textAppearanceMedium" 
+				       android:layout_gravity="center"/> 
+				   <Button
+			            android:id="@+id/btn_bulb_all_off"
+			            android:layout_width="240dp"
+			            android:layout_height="wrap_content"
+			            android:layout_gravity="center"
+			            android:text="ALL BULB OFF" />   
+
+			   </LinearLayout>
+		</LinearLayout>
+    </ScrollView>
+</LinearLayout>
