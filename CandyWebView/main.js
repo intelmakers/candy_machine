@@ -76,9 +76,9 @@ http.createServer(function (req, res) {
     var value;
     // This is a very quick and dirty way of detecting a request for the page
     // versus a request for light values
-    if (req.url.indexOf('lightsensor') != -1) {
+    if (req.url.indexOf('candyWebPage') != -1) {
         res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end(lightSensorPage);
+        res.end(candyWebPage);
     }
     else {
         value = 1;
