@@ -38,6 +38,7 @@ middle = None
 def init_candy():
     global cServo
     cServo = servo.ES08A(candyPin)
+    cServo.setAngle(180)
 
 def init_spider():
     global left
@@ -68,7 +69,11 @@ def move_servo(aServo, angle1, angle2, time_interval):
 
 def give_candy():
     move_servo(cServo, 180, 0, 1)
-    time.sleep(1)
+    time.sleep(0.4)
+    move_servo(cServo, 0, 30, 1)
+    time.sleep(0.4)
+    move_servo(cServo, 30, 0, 1)
+    time.sleep(0.4)
     move_servo(cServo, 0, 180, 1)
 
 
