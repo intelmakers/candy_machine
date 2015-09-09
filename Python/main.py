@@ -35,7 +35,7 @@ def interact():
             os.system(cm)
             time.sleep(0.1)
 
- def sing():
+def sing():
         cm = "aplay {0}".format(candy_audio_file)
         os.system(cm)
 
@@ -48,20 +48,22 @@ def iotivity():
         p = Process(target=sing)
         p.start()
         moveServo.give_candy()
+        time.sleep(1)
         moveServo.give_candy()
+        time.sleep(1)
         moveServo.give_candy()
         p.join()
             
 def main():
     moveServo.init_candy()
-	while (1 > 0):
-                iotivity()
-		cameraRead.read_image(file)
-		detected = faceDetect.face_detect(file)
+    while (1 > 0):
+        iotivity()
+	cameraRead.read_image(file)
+        detected = faceDetect.face_detect(file)
 
-		if (detected != None):
-			interact()
-                        time.sleep(3)
+        if (detected != None):
+            interact()
+            time.sleep(3)
 			
 if __name__ == "__main__":
     try:
@@ -70,4 +72,5 @@ if __name__ == "__main__":
         print "Keyboard interrupt received. Cleaning up..."
         cameraRead.close_camera()
 	moveServo.del_all_servos()
+        print "Keyboard interrupt Clean up done"
 		
