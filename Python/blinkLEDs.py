@@ -23,7 +23,29 @@ def toggle(led, state):
     led.write(state)
 
 def allLeds(leds, duration, state):
-    for color in leds:
-        toggle(leds[color], state)
+    for l in leds:
+        toggle(l, state)
 
     time.sleep(duration)
+
+def setup():
+    # Set direction of LED controls to out
+    for color in leds:
+        leds[color].dir(mraa.DIR_OUT)
+
+
+def main():
+    setup()
+    while True:
+        allLedsOn(leds, 1)
+        allLedsOff(leds, 1)
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print "Keyboard interrupt received. Cleaning up..."
+        allLedsOff(leds, 0)
+
+    Status API Training Shop Blog About Pricing 
+
