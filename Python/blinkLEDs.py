@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import mraa
 import time
 
@@ -17,14 +18,14 @@ leds[1] = mraa.Gpio(10)
 leds[2] = mraa.Gpio(11)
 
 
-LED_ON = 1
-LED_OFF = 0
+ON = 1
+OFF = 0
 def toggle(led, state):
     led.write(state)
 
 def allLeds(leds, duration, state):
     for l in leds:
-        toggle(l, state)
+        toggle(leds[l], state)
 
     time.sleep(duration)
 
@@ -33,19 +34,19 @@ def setup():
     for color in leds:
         leds[color].dir(mraa.DIR_OUT)
 
+def blink(leds, duration, times):
+    for i in range(1, times):
+        allLeds(leds, duration, ON)
+        allLeds(leds, duration, OFF)
 
 def main():
     setup()
-    while True:
-        allLedsOn(leds, 1)
-        allLedsOff(leds, 1)
+    blink(leds, 0.25, 1000)
+
 
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
         print "Keyboard interrupt received. Cleaning up..."
-        allLedsOff(leds, 0)
-
-    Status API Training Shop Blog About Pricing 
-
+        allLeds(leds, 0, OFF)
