@@ -7,6 +7,7 @@ import faceDetect
 import listen
 import moveServo
 import os.path
+from multiprocessing import Process
 
 
 file = '/usr/lib/edison_config_tools/public/image.jpg'
@@ -29,11 +30,14 @@ def interact():
             os.system(cm)
 	    moveServo.give_candy()
 	else:
-	    to_say =  "I O Tivity Party"
+	    to_say =  "Great I can eat all the candy myself"
             cm = 'espeak "'+to_say+'"'
             os.system(cm)
             time.sleep(0.1)
 
+ def sing():
+        cm = "aplay {0}".format(candy_audio_file)
+        os.system(cm)
 
 def iotivity():
     if os.path.exists(iotivity_file):
@@ -41,14 +45,15 @@ def iotivity():
         to_say = "I O Tivity Party"
         cm = 'espeak "'+to_say+'"'
         os.system(cm)
-        cm = "aplay {0}".format(candy_audio_file)
-        os.system(cm)
+        p = Process(target=sing)
+        p.start()
         moveServo.give_candy()
         moveServo.give_candy()
         moveServo.give_candy()
+        p.join()
             
 def main():
-        moveServo.init_candy()
+    moveServo.init_candy()
 	while (1 > 0):
                 iotivity()
 		cameraRead.read_image(file)
