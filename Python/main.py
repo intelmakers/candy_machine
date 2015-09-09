@@ -9,7 +9,7 @@ import moveServo
 import os.path
 
 
-file = '/usr/lib/edison_config_tools/public/image.png'
+file = '/usr/lib/edison_config_tools/public/image.jpg'
 iotivity_dir = '/home/root/events'
 iotivity_file = "{0}/candy_PUT.txt".format(iotivity_dir)
 my_dir = os.path.dirname(__file__)
