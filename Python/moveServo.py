@@ -26,8 +26,8 @@ import pyupm_servo as servo
 num_steps = 20
 
 candyPin = 5
-leftPin = 11
-rightPin = 10
+leftPin = 3
+rightPin = 6
 middlePin = 9
 
 cServo = None
