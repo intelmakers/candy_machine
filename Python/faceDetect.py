@@ -22,7 +22,7 @@ def face_detect(in_file):
 		
 	if num_of_faces > 1:
         	to_say = "Too many people. One at a time please!"
-        	cm = 'espeak "'+to_say+'"'
+        	cm = 'espeak -a 200"'+to_say+'"'
         	os.system(cm)
 		#espeak.synth("")
 		return None

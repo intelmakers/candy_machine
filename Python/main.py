@@ -19,19 +19,19 @@ candy_audio_file = "{0}/audio/IWantCandylyricsbyAaronCarter.wav".format(my_dir)
 def interact():
         to_say = "Nice to meet you. Would you like a candy"
         print to_say
-        cm = 'espeak "'+to_say+'"'
+        cm = 'espeak -a 200 "'+to_say+'"'
         os.system(cm)
         said = listen.doListen()
         print "got words {0}".format(said)
 	words = said.split()
 	if "YES" in words:
 	    to_say = "Do not forget to brush your teeth!!!"
-	    cm = 'espeak "'+to_say+'"'
+	    cm = 'espeak -a 200 "'+to_say+'"'
             os.system(cm)
 	    moveServo.give_candy()
 	else:
 	    to_say =  "Great I can eat all the candy myself"
-            cm = 'espeak "'+to_say+'"'
+            cm = 'espeak -a 200 -s 135 "'+to_say+'"'
             os.system(cm)
             time.sleep(0.1)
 
@@ -43,10 +43,14 @@ def iotivity():
     if os.path.exists(iotivity_file):
         os.remove(iotivity_file)
         to_say = "I O Tivity Party"
-        cm = 'espeak "'+to_say+'"'
+        cm = 'espeak -a 200 "'+to_say+'"'
         os.system(cm)
         p = Process(target=sing)
         p.start()
+        moveServo.give_candy()
+        time.sleep(1)
+        moveServo.give_candy()
+        time.sleep(1)
         moveServo.give_candy()
         time.sleep(1)
         moveServo.give_candy()

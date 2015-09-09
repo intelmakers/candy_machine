@@ -67,9 +67,9 @@ def move_servo(aServo, angle1, angle2, time_interval):
 	
 
 def give_candy():
-    move_servo(cServo, 0, 90, 1)
+    move_servo(cServo, 180, 0, 1)
     time.sleep(1)
-    move_servo(cServo, 90, 0, 1)
+    move_servo(cServo, 0, 180, 1)
 
 
 def step_left():
