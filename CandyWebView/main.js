@@ -27,7 +27,7 @@ console.log('MRAA Version: ' + mraa.getVersion()); //write the mraa version to t
 
 // Start by loading in some data
 var fs = require('fs');
-imageDir = __dir;
+imageDir = __dirname;
 
 var CandyWebPage = fs.readFileSync('/node_app_slot/candyWebPage.html');
 
