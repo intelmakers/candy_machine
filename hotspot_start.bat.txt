@@ -1,0 +1,4 @@
+
+netsh wlan set hostednetwork mode=allow ssid=mzhpHotspot key=c1234567	
+netsh wlan start hostednetwork
+
