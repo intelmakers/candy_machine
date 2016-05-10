@@ -53,6 +53,10 @@ def init_spider():
     middle.setAngle(90)
 
 
+def move_servo_ext(angle1, angle2, time_interval):
+    move_servo(cServo, angle1, angle2, time_interval)
+    time.sleep(0.5)
+	
 def move_servo(aServo, angle1, angle2, time_interval):
     step_angle = (angle2-angle1)/num_steps
     sleep_time = time_interval/num_steps
