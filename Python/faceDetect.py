@@ -21,9 +21,14 @@ def face_detect(in_file):
 		return None
 		
 	if num_of_faces > 1:
-        	to_say = "Too many people. One at a time please!"
-        	cm = 'espeak -a 200"'+to_say+'"'
-        	os.system(cm)
+		to_say = "Too many people. One at a time please."
+        	print to_say	
+        	cm = 'espeak -a 200 "'+to_say+'"'
+        	os.system(cm)	
+                #print "more than one found"
+        	#to_say = "Too many people. One at a time please!"
+        	#cm = 'espeak -a 200"'+to_say+'"'
+        	#os.system(cm)
 		#espeak.synth("")
 		return None
 		

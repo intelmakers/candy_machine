@@ -5,7 +5,7 @@ import cv2
 camera_port = 0
  
 #Number of frames to throw away while the camera adjusts to light levels
-ramp_frames = 30
+ramp_frames = 10
  
 # Now we can initialize the camera capture object with the cv2.VideoCapture class.
 # All it needs is the index to a camera port.
